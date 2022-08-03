@@ -27,6 +27,7 @@ var (
 	proxy       string
 	requestData string
 	method      string
+	timeout		int
 )
 
 type customh []string
@@ -62,6 +63,7 @@ func main() {
 	flag.StringVar(&proxy, "x", "", "Proxy URL. Example: http://127.0.0.1:8080")
 	flag.StringVar(&useragent, "u", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36", "Set Custom User agent. Default is Mozilla")
 	flag.Var(&custhead, "h", "Set Custom Header.")
+	flag.IntVar(&timeout, "t", 3, "Set the request timeout")
 
 	flag.Parse()
 
@@ -201,6 +203,7 @@ func requestfunc(u string, requestData string, method string) (resp *http.Respon
 
 	client := &http.Client{
 		CheckRedirect: redirectPolicyFunc,
+		Timeout: time.Duration(timeout) * time.Second,
 	}
 
 	req, err := http.NewRequest(method, u, bytes.NewBufferString(requestData))
