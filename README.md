@@ -1,3 +1,6 @@
+This fork is just my personal changes to the tool. Specifically I added a timeout functionality. All credit to KathanP19.
+
+
 # Gxss v4.0
 
 A Light Weight Tool for checking reflecting Parameters in a URL. Inspired by [kxss](https://github.com/tomnomnom/hacks/tree/master/kxss) by [@tomnomnom](https://twitter.com/TomNomNom).
